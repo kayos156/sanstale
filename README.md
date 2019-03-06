@@ -1,6 +1,7 @@
-#Sanstale
-undertale fangame written in love2d.
+# SansTale
 
-I'm not sure if I should continue this because I lost motivation, so I won't be writing any documentation soon.
+An Undertale Fangame written in Love2D.
 
-Feel free to fork this or whatever
+I'm going to try my best to continue this.
+
+(Feel free to fork this)
