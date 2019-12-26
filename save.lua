@@ -13,7 +13,7 @@ function save.parse(string) --save file parser
 end
 
 function save.load() --load things
-    if love.filesystem.exists(save.file) then --if save file exists
+    if love.filesystem.getInfo(save.file) then --if save file exists
         firsttime = false
         for line in love.filesystem.lines(save.file) do --parse each line
             local var, value = save.parse(line)

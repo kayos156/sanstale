@@ -30,7 +30,7 @@ function love.load(arg)
    
     state = "menu"
 
-    debugon = (arg[2] == "debug") --activate debug mode
+    debugon = (arg[1] == "debug") --activate debug mode
     if debugon then
         debugtext = lg.newText(dialog.fonts.determination, "DEBUG ON")
     end

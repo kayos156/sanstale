@@ -6,4 +6,10 @@ local st = rooms:new{
     start_y = 0
 }
 
+--START ELEMENTS
+
+st:element(4675, 282, 80, 7, nil, nil, {new = "ps_house", newx = 427, newy = 400})
+
+--END ELEMENTS
+
 return st

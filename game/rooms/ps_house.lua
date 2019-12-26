@@ -17,7 +17,12 @@ pshr:element(44, 10, 60, 92, { "The labels on the door read:",
 {font = "papyrus", voice = "papyrus", text = "papyrus allowed."}})
 
 --bone frame
-pshr:element(252, 14, 94, 96, {"This image reminds you of\nwhat's important in life."}, true)
+pshr:element(252, 14, 94, 96, {"This image reminds you of\nwhat's important in life.",
+{face = "sans", facenum = 4, text = "such as..."},
+{face = "sans", facenum = 3, text = "...sleeping."},
+{face = "sans", facenum = 0, text = "and knowing how to\nopen the door to my\nroom."},
+{face = "sans", facenum = 6, text = "...to sleep."}}, true)
+--that's a hint on how to go back to sans' room
 
 --door to sans' room
 pshr:element(460, 98, 60, 13, nil, true, nil, function() rooms:change("sans", 90, 330) end)
@@ -48,7 +53,7 @@ pshr:element(374, 250, 118, 11, nil, nil, {new = "ps_kitchen", newx = 400, newy 
 pshr:element(496, 284, 74, 136, "(There's some spaghetti here.)\n(It doesn't look very tasty.)")
 
 --door to snowdin
-pshr:element(412, 467, 80, 7, nil, nil, {new = "snowtown", newx = 4675, newy = 282})
+pshr:element(412, 467, 80, 7, nil, nil, {new = "snowtown", newx = 4690, newy = 250})
 
 --middle wall thing 1 (left to kitchen)
 pshr:element(136, 162, 241, 102)
