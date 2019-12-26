@@ -86,17 +86,17 @@ function dialog:say(face, facenum, text, font, voice)
         love.event.pump()
         for ev, a, b, c in love.event.poll() do --poll events
             if ev == "quit" then
-            	love.event.quit()
-	        elseif ev == "keypressed" then
+                love.event.quit()
+	    elseif ev == "keypressed" then
                 if CANCEL[a] then --skip text
                     text_pointer = #text
                 elseif CONFIRM[a] and text_pointer >= #text then --if reached end of text then exit lel
                     loop = false
                 end
-		    end
-		end
+            end
+        end
  
-		draw() --draw shit
+        draw() --draw shit
         
         if rooms[rooms.current].update then --update room
             rooms[rooms.current]:update(dt)
