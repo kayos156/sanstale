@@ -37,6 +37,7 @@ end
 function sans:update(dt) --Function for updating sans
     if sans.anim.paused then
         sans.anim[sans.anim.current]:pause()
+        sans.anim[sans.anim.current]:gotoFrame(1)
     else
         sans.anim[sans.anim.current]:resume()
     end

@@ -86,7 +86,7 @@ function love.draw(cameras)
                 elseif i.exit then
                     lg.setColor(0,0,1,0.5)
                 else
-                    lg.setColor(1,0,0,0.5) --solid non-exit elements are red
+                    lg.setColor(1,0,0,0.5) --regular solid elements are red
                 end
                 lg.rectangle("fill", i.x, i.y, i.width, i.height)
             end
