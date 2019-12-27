@@ -68,7 +68,7 @@ function dialog:say(face, facenum, text, font, voice)
             love.graphics.draw(self.faces[face][facenum], camera:getX()+40, camera:getY()+20)
         end
         love.graphics.setFont(font)
-        love.graphics.print({{255,255,255}, asterisk..text:sub(1, text_pointer)}, camera:getX()+40+self.faces[face][facenum]:getWidth(), camera:getY()+28) --print text
+        love.graphics.print({{1,1,1}, asterisk..text:sub(1, text_pointer)}, camera:getX()+40+self.faces[face][facenum]:getWidth(), camera:getY()+28) --print text
         love.graphics.present() --tell love to draw everything (you have to do this if you want to draw outside love.draw)
         camera:unset()
     end
