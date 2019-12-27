@@ -31,8 +31,10 @@ function love.load(arg)
     state = "menu"
 
     debugon = (arg[1] == "debug") --activate debug mode
+    debug_elems = false
     if debugon then
         debugtext = lg.newText(dialog.fonts.determination, "DEBUG ON")
+        debug_elems = true
     end
 
     save.file = ".h€lP_00" --mwahahah
@@ -72,12 +74,29 @@ function love.draw(cameras)
         rooms[rooms.current]:draw() --draw room
         sans:draw() --draw sans
         rooms:opdraw() --draw room transition opacity thing
+        if debug_elems then --semi-transparent room element vision (colored)
+            lg.setColor(1,1,1,0.5)
+            lg.rectangle("fill",
+                sans.x+sans.hitbox.x,
+                sans.y+sans.hitbox.y,
+                sans.hitbox.width, sans.hitbox.height)
+            for _,i in pairs(rooms[rooms.current].elements) do
+                if i.nocollision then
+                    lg.setColor(0,1,0,0.5)
+                elseif i.exit then
+                    lg.setColor(0,0,1,0.5)
+                else
+                    lg.setColor(1,0,0,0.5) --solid non-exit elements are red
+                end
+                lg.rectangle("fill", i.x, i.y, i.width, i.height)
+            end
+            lg.setColor(1,1,1,1) --reset color
+        end
     end
     
     if cameras ~= false and state == "overworld" then
         camera:unset()
     end
-    
     if debugon then
         lg.draw(debugtext, 0, height-debugtext:getHeight())
     end
@@ -139,6 +158,10 @@ function love.keypressed(k)
     elseif k == "s" and debugon then
         print("FORCE SAVED") --force save
         save.save()
+
+    elseif k == "v" and debugon then
+        debug_elems = not debug_elems
+        print("element view:", debug_elems) --debug element vision
 
     elseif k == "lshift" and debugon then
         print("super speed on")

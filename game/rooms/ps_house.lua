@@ -74,7 +74,7 @@ pshr:element(0, 264, 12, 160)
 --bottom left  wall
 pshr:element(12, 420, 400, 40)
 --right wall
-pshr:element(572, 274, 39, 160)
+pshr:element(572, 265, 39, 169)
 --bottom left wall
 pshr:element(492, 424, 92, 40)
 
