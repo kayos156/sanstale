@@ -18,6 +18,9 @@ function collision(x1,y1,w1,h1, x2,y2,w2,h2) --simple function to detect collisi
     y2 < y1+h1
 end
 
+function clamp(v, min, max) --simple function to clamp a value between a minimum and maximum
+    return math.min(math.max(v, min), max)
+end
 
 function love.load(arg)
     CONFIRM = {z=true, ["return"] = true} --constants
@@ -66,10 +69,14 @@ function love.draw(cameras)
         menu:draw()
     elseif state == "overworld" then
         if not rooms[rooms.current].noscrollx then --adjust camera x to sans if room hasn't got the flag noscrollx
-            camera:setX(sans.x-width/2+sans.width/2)
+            camera:setX(clamp(
+                sans.x-width/2+sans.width/2, 0, rooms[rooms.current].img:getWidth()-width
+            ))
         end
         if not rooms[rooms.current].noscrolly then --adjust camera y to sans if room hasn't got the flag noscrolly
-            camera:setY(sans.y-height/2+sans.height/2)
+            camera:setY(clamp(
+                sans.y-height/2+sans.height/2, 0, rooms[rooms.current].img:getHeight()-height
+            ))
         end
         rooms[rooms.current]:draw() --draw room
         sans:draw() --draw sans
@@ -99,6 +106,10 @@ function love.draw(cameras)
     end
     if debugon then
         lg.draw(debugtext, 0, height-debugtext:getHeight())
+        lg.setFont(dialog.fonts.determination)
+        lg.print(
+            " Sans: "..(tostring(sans.x):sub(0,10))..","..(tostring(sans.y):sub(0,10)),
+            debugtext:getWidth(), height-debugtext:getHeight())
     end
 end
 
