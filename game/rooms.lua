@@ -89,6 +89,14 @@ local r_template = { --room template
             love.graphics.draw(self.img)
         end
     end,
+    fgdraw = function(self)
+        if not(self.fg_sheet or self.fg_img) then return end
+        if self.animation then
+            self.animation:draw(self.fg_sheet,0,0)
+        else
+            love.graphics.draw(self.fg_img)
+        end
+    end,
     update = function(self, dt)
         if self.animation then
             self.animation:update(dt)
@@ -100,6 +108,7 @@ function rooms:new(arg) --new room constructor
     local o = setmetatable({}, {__index=r_template})
     o.elements = {}
     o.sheet, o.img, o.animation, o.grid = nil,nil,nil,nil
+    o.fg_sheet, o.fg_img = nil,nil
     if arg then
         for k,v in pairs(arg) do
             o[k] = v

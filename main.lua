@@ -80,6 +80,7 @@ function love.draw(cameras)
         end
         rooms[rooms.current]:draw() --draw room
         sans:draw() --draw sans
+        rooms[rooms.current]:fgdraw() --draw room foreground
         rooms:opdraw() --draw room transition opacity thing
         if debug_elems then --semi-transparent room element vision (colored)
             lg.setColor(1,1,1,0.5)
