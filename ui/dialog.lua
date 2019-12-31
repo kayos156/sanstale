@@ -63,12 +63,17 @@ function dialog:say(face, facenum, text, font, voice)
     local function draw() --drawing function
         camera:set()
         love.draw(false) --draw everyting without updating cameras
-        love.graphics.draw(self.box, camera:getX()+30, camera:getY()+10) --draw dialog box
+        local coords = {x = camera:getX()+30, y = camera:getY()+10}
+        if sans.y-camera:getY()+sans.height/2 <= height/2 then
+            coords.y = camera:getY()+height-self.box:getHeight()-10
+        end
+        love.graphics.draw(self.box, coords.x, coords.y) --draw dialog box
         if face ~= 'def' then --draw face
-            love.graphics.draw(self.faces[face][facenum], camera:getX()+40, camera:getY()+20)
+            love.graphics.draw(self.faces[face][facenum], coords.x+10, coords.y+10)
         end
         love.graphics.setFont(font)
-        love.graphics.print({{1,1,1}, asterisk..text:sub(1, text_pointer)}, camera:getX()+40+self.faces[face][facenum]:getWidth(), camera:getY()+28) --print text
+        love.graphics.print({{1,1,1}, asterisk..text:sub(1, text_pointer)},
+            coords.x+10+self.faces[face][facenum]:getWidth(), coords.y+18) --print text
         love.graphics.present() --tell love to draw everything (you have to do this if you want to draw outside love.draw)
         camera:unset()
     end
