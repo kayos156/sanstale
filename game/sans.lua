@@ -28,7 +28,10 @@ sans.anim = { --table that holds sans' animations
     walkdown  = anim8.newAnimation(sans.grid('1-4',1), sans.speed/1000*1.5),
     walkleft  = anim8.newAnimation(sans.grid('1-4',2), sans.speed/1000*1.5),
     walkright = anim8.newAnimation(sans.grid('1-4',3), sans.speed/1000*1.5),
-    walkup    = anim8.newAnimation(sans.grid('1-4',4), sans.speed/1000*1.5)
+    walkup    = anim8.newAnimation(sans.grid('1-4',4), sans.speed/1000*1.5),
+    --dunno how to name this:
+    joke      = anim8.newAnimation(sans.grid('1-2',5), sans.speed/1000*1.5),
+    winkshrug = anim8.newAnimation(sans.grid('1-2',6), sans.speed/1000*1.5)
 }
 
 function sans:draw() --Function for drawing sans

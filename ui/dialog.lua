@@ -110,7 +110,27 @@ function dialog:say(face, facenum, text, font, voice)
         if pointer_delay >= 0.05 then
             pointer_delay = 0
             if text_pointer < #text then
-                if self.voices[voice] then self.voices[voice]:play() end --voice sounds
+                --soundless symbols table
+                local silent = {
+                    [" "] = true,
+                    ["\n"] = true,
+                    [","] = true,
+                    ["."] = true,
+                    [":"] = true,
+                    [";"] = true,
+                    ["!"] = true,
+                    ["?"] = true,
+                    ["'"] = true,
+                    ["-"] = true,
+                    ["\""] = true,
+                    ["("] = true,
+                    [")"] = true
+                }
+                if silent[text:sub(text_pointer,text_pointer)] then
+                    self.voices[voice]:seek(0,"seconds")
+                else
+                    self.voices[voice]:play() --voice sounds
+                end
                 text_pointer = text_pointer+1
             end
         end

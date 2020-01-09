@@ -45,6 +45,10 @@ st:element(3544, 0, 1800, 202)
 st:element(5226, 202, 150, 39)
 --west forest
 st:element(0, 0, 3368, 161)
+st:element(161, 161, 405, 20)
+st:element(181, 181, 365, 20)
+st:element(181, 201, 345, 20)
+st:element(181, 221, 325, 20)
 --snowdin logo
 st:element(612, 205, 356, 56, "(Welcome to Snowdin Town!)")
 --shop & snowed inn
@@ -58,10 +62,12 @@ st:element(2538, 0, 412, 217, {
 {face = "sans", facenum = 0, text = "so are you gonna go in or what?"}
 })
 st:element(2756, 0, 53, 234) --the pot
---spruce tree
+--christmas tree
 st:element(2257, 238, 121, 85, "(It's a carefully decorated\ntree.)")
 --south forest
 st:element(0, 361, 5500, 100)
+st:element(178, 320, 336, 20)
+st:element(158, 340, 376, 21)
 --top border
 st:element(0, 0, 5000, 1)
 --left border
