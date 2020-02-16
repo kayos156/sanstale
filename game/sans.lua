@@ -34,6 +34,12 @@ sans.anim = { --table that holds sans' animations
     winkshrug = anim8.newAnimation(sans.grid('1-2',6), sans.speed/1000*1.5)
 }
 
+--stats
+sans.lv = 1
+sans.exp = 0
+sans.hp = 1
+sans.gold = 0
+
 function sans:draw() --Function for drawing sans
     self.anim[self.anim.current]:draw(self.sheet, self.x, self.y)
 end
@@ -106,7 +112,6 @@ function sans:check() --check elements (overworld)
            
             if e.oncheck then
                 e.oncheck() --oncheck is a function obv
-                return
             end
             if type(e.text) == "table" then
                 --loop through the text if it's a table

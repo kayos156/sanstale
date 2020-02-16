@@ -26,8 +26,8 @@ function menu:draw()
             love.graphics.print("Continue",               170,228)
             love.graphics.print({{1,1,0},  "Reset"},  350,228)
         end
-        --Print 'LV1' and 'sans'
-        love.graphics.print("LV1", 280, 128)
+        --Print L.O.VE and 'sans'
+        love.graphics.print("LV"..tostring(sans.lv), 280, 128)
         love.graphics.setFont(dialog.fonts.sans)
         love.graphics.print("sans", 140, 128)
 

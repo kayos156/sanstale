@@ -27,8 +27,21 @@ pshr:element(252, 14, 94, 96, {"This image reminds you of\nwhat's important in l
 --door to sans' room
 pshr:element(460, 98, 60, 13, nil, true, nil, function() rooms:change("sans", 90, 330) end)
 
---sofa
-pshr:element(172, 348, 160, 74, "(It's a sofa.)")
+--couch
+pshr:element(172, 348, 160, 74, nil, nil, nil,
+function()
+    if not events.couch then
+        dialog:say(nil,nil,"(You touch the couch.)")
+        dialog:say(nil,nil,"(It makes a jangling sound.)")
+        dialog:say(nil,nil,
+            "(You find a bunch of loose coins\ninside the couch...)")
+        sans.gold=sans.gold+20
+        events.couch=true
+        dialog:say(nil,nil,"(You got 20G.)")
+    else
+        dialog:say(nil,nil,"(It's a saggy old couch.)")
+    end
+end)
 
 --book
 pshr:element(32, 356, 50, 50, {"(It's a joke book.)",

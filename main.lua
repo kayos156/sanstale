@@ -10,6 +10,7 @@ sans   = require "game.sans"
 music  = require "game.music"
 rooms  = require "game.rooms"
 save   = require "save"
+igmenu = require "ui.igmenu"
 
 function collision(x1,y1,w1,h1, x2,y2,w2,h2) --simple function to detect collision between two rectangles
     return x1 < x2+w2 and
@@ -25,6 +26,7 @@ end
 function love.load(arg)
     CONFIRM = {z=true, ["return"] = true} --constants
     CANCEL = {x=true,rshift=true}
+    MENU = {c=true,rctrl=true}
     width = lg.getWidth()
     height = lg.getHeight()
     --load modules
@@ -65,6 +67,7 @@ function love.draw(cameras)
     if cameras ~= false and state == "overworld" then
         camera:set()
     end
+    lg.setColor(1,1,1,1) --reset color
     if state == "menu" then
         menu:draw()
     elseif state == "overworld" then
@@ -98,10 +101,9 @@ function love.draw(cameras)
                 end
                 lg.rectangle("fill", i.x, i.y, i.width, i.height)
             end
-            lg.setColor(1,1,1,1) --reset color
         end
     end
-    
+    lg.setColor(1,1,1,1) --reset color
     if cameras ~= false and state == "overworld" then
         camera:unset()
     end
@@ -124,7 +126,12 @@ function love.keypressed(k)
         else
             love.audio.setVolume(1)
         end
-   
+    
+    elseif MENU[k] then
+        if state == "overworld" then
+            igmenu.popup() --activate in-game menu when c/ctrl is pressed
+        end
+    
     elseif CONFIRM[k] then
         if state == "overworld" then
             sans:check() --check when z is pressed
@@ -148,6 +155,7 @@ function love.keypressed(k)
                     menu.resetted = true
                     print("Reseted")
                     sans.x, sans.y = 100,100
+                    sans.lv, sans.exp, sans.hp, sans.gold = 1,0,1,0
                     rooms:load('sans')
                     playtime = 0
                     love.filesystem.remove(save.file) --erase save file
